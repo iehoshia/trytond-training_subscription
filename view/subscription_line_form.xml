@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Subscription Line" col="6">
+    <label name="session"/>
+    <field name="session"/>
+    <newline />
+    <label name="unit_price"/>
+    <field name="unit_price"/>
+    <newline />
+    <label name="quantity"/>
+    <field name="quantity"/>
+    <newline />
+    <label name="total_amount"/>
+    <field name="total_amount"/>
+    <newline />
+    <label name="number_calls"/>
+    <field name="number_calls"/>
+    <newline />
+    <label name="notes"/>
+    <field name="notes" colspan="5"/>
+</form>

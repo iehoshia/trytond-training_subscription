@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+    
+<!-- Training Subscription Configuration -->
+
+        <record model="ir.ui.view" id="training_subscription_configuration_view_form">
+            <field name="model">training.configuration</field>
+            <field name="type">form</field>
+            <field name="inherit" eval="None"/>            
+            <field name="name">configuration_form</field>
+        </record>
+        
+        <record model="ir.action.act_window" id="training_action_subscription_config">
+            <field name="name">Default Charges</field>
+            <field name="res_model">training.configuration</field>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_subscription_form_view_ext">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="training_subscription_configuration_view_form"/>
+            <field name="act_window" ref="training_action_subscription_config"/>
+        </record>
+
+        <menuitem action="training_action_subscription_config"
+            id="training_subscription_config_menuitem" parent="training.training_conf_menu"/>
+
+    </data>
+</tryton>

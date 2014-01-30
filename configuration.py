@@ -12,23 +12,11 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from dateutil.relativedelta import relativedelta
-from datetime import datetime
 from trytond.model import ModelView, ModelSingleton, ModelSQL, fields
-from trytond.wizard import Wizard, StateAction, StateView, Button
-from trytond.transaction import Transaction
-#from trytond.backend import TableHandler
-from trytond.pyson import Eval, Not, Bool, PYSONEncoder, Equal
-from trytond.pool import Pool
 
-from dateutil.relativedelta import relativedelta
-from datetime import datetime
-from trytond.model import ModelView, ModelSingleton, ModelSQL, fields
-from trytond.wizard import Wizard, StateAction, StateView, Button
-from trytond.transaction import Transaction
-#from trytond.backend import TableHandler
-from trytond.pyson import Eval, Not, Bool, PYSONEncoder, Equal
-from trytond.pool import Pool
+__all__ = ['TrainingSequences',
+           'TrainingConfiguration',
+           'ConfigurationProduct']
 
 # TRAINING SEQUENCES
 class TrainingSequences(ModelSingleton, ModelSQL, ModelView):
@@ -38,3 +26,24 @@ class TrainingSequences(ModelSingleton, ModelSQL, ModelView):
     subscription_sequence = fields.Property(fields.Many2One(
         'ir.sequence', 'Subscription Sequence', required=True,
         domain=[('code', '=', 'training.subscription')]))
+    
+class TrainingConfiguration(ModelSingleton, ModelSQL, ModelView):
+    'Training Subscription Configuration'
+    __name__ = 'training.configuration'
+
+    default_charges = fields.Many2Many('training.configuration-product.product', 
+        'configuration', 'product', 'Default Charges')
+
+class ConfigurationProduct(ModelSQL):
+    'Configuration - Product'
+    __name__ = 'training.configuration-product.product'
+    _table = 'training_configuration_product_rel'
+    
+    configuration = fields.Many2One('training.configuration', 'Configuration',
+            ondelete='CASCADE', select=True, required=True)
+    product = fields.Many2One('product.product', 'Product',
+            ondelete='RESTRICT', select=True, required=True)
+
+    
+
+## create default charges

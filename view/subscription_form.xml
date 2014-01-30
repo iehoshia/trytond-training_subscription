@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form string="Subscription" col="6">
+	<label name="subscriptor"/>
+	<field name="subscriptor"/>
+	<label name="student"/>
+	<field name="student"/>
+	<label name="invoice_method"/>
+	<field name="invoice_method"/>
+	<label name="date"/>
+	<field name="date"/>
+	<label name="code"/>
+	<field name="code"/>
+	<label name="description"/>
+	<field name="description"/>
+    <notebook colspan="6">
+    	<page string="Lines" id="lines">
+    		<label name="payment_term"/>
+    		<field name="payment_term"/>
+    		<label name="price_list"/>
+    		<field name="price_list"/>
+			<label name="media_contact"/>
+            <field name="media_contact"/>
+            <label name="salesman"/>
+            <field name="salesman"/>
+    		<newline />
+            <field name="lines" colspan="6"/>
+            <newline />
+			<label name="state"/>
+		    <field name="state"/>
+			<group id="amount_buttons">
+                <label name="total_amount" xalign="1.0" xexpand="1"/>
+                <field name="total_amount" xalign="1.0" xexpand="0"/>
+                <group  id="buttons">
+                    <button name="cancel" string="Cancel"
+                        icon="tryton-cancel"/>
+                    <button name="draft" string="Draft"/>
+                    <button name="quotation" string="Quotation"
+                        icon="tryton-go-next"/>
+                    <button name="confirmed" string="Confirm"
+                        icon="tryton-go-next"/>
+                    <button name="processing" string="Process"
+                        icon="tryton-go-next"/>
+                    <button name="stop" string="Stop"
+                        icon="tryton-cancel"/>
+                    <button name="done" string="Done"
+                        icon="tryton-go-next"/>
+            	</group>
+			</group>
+        </page>
+        <page string="Subscription Info" id="subscription">
+	        <label name="user"/>
+	        <field name="user"/>
+	        <label name="next_call"/>
+	        <field name="next_call"/>
+	        <label name="request_user"/>
+	        <field name="request_user"/>
+	        <label name="request_group"/>
+	        <field name="request_group"/>
+	        <label name="interval_number"/>
+	        <field name="interval_number"/>
+	        <label name="number_calls"/>
+	        <field name="number_calls"/>
+	        <label name="interval_type"/>
+	        <field name="interval_type"/>
+	        <label name="cron"/>
+	        <field name="cron"/>
+	        <label name="model_source"/>
+	        <field name="model_source"/>
+        </page>
+    	<page string="Sales"  id="sales">
+            <field name="sales"/>
+        </page>
+        <page string="Invoices"  id="invoices">
+            <field name="invoices"/>
+        </page>
+    </notebook>
+</form>

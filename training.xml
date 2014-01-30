@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+<!-- Menu -->
+        <menuitem name="Subscription" id="training_subscription"
+            parent="training.training_menu" sequence="30"/>
+
+<!-- Training Offer -->
+
+        <record model="ir.ui.view" id="training_offer_view_form_ext">
+            <field name="model">training.offer</field>
+            <field name="inherit" ref="training.offer_view_form"/>            
+            <field name="name">offer_form</field>
+        </record>
+
+<!-- Training Session -->
+
+        <record model="ir.ui.view" id="training_session_view_form_ext">
+            <field name="model">training.session</field>
+            <field name="inherit" ref="training_catalog.session_view_tree"/>            
+            <field name="name">session_tree</field>
+        </record>
+        
+        <record model="ir.ui.view" id="training_session_view_tree_ext">
+            <field name="model">training.session</field>
+            <field name="inherit" ref="training_catalog.session_view_form"/>            
+            <field name="name">session_form</field>
+        </record>
+
+<!-- Training Subscription -->
+
+        <record model="ir.ui.view" id="training_subscription_view_form">
+            <field name="model">training.subscription</field>
+            <field name="type">form</field>
+            <field name="inherit" eval="None"/>            
+            <field name="name">subscription_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="training_subscription_view_tree">
+            <field name="model">training.subscription</field>
+            <field name="type">tree</field>
+            <field name="inherit" eval="None"/>
+            <field name="name">subscription_tree</field>
+        </record>
+        
+        <record model="ir.action.act_window" id="training_action_subscription">
+            <field name="name">Subscription</field>
+            <field name="res_model">training.subscription</field>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_subscription_tree_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="training_subscription_view_tree"/>
+            <field name="act_window" ref="training_action_subscription"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_subscription_form_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="training_subscription_view_form"/>
+            <field name="act_window" ref="training_action_subscription"/>
+        </record>
+
+        <menuitem action="training_action_subscription"
+            id="training_subscription_menuitem" parent="training_subscription"/>
+
+<!-- Training Subscription Line -->
+
+        <record model="ir.ui.view" id="subscription_line_view_form">
+            <field name="model">training.subscription.line</field>
+            <field name="type">form</field>
+            <field name="inherit" eval="None"/>            
+            <field name="name">subscription_line_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="subscription_line_view_tree">
+            <field name="model">training.subscription.line</field>
+            <field name="type">tree</field>
+            <field name="inherit" eval="None"/>
+            <field name="name">subscription_line_tree</field>
+        </record>
+
+<!-- Training Subscription History -->
+
+        <record model="ir.ui.view" id="subscription_history_view_form">
+            <field name="model">training.subscription.history</field>
+            <field name="type">form</field>
+            <field name="inherit" eval="None"/>            
+            <field name="name">subscription_history_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="subscription_history_view_tree">
+            <field name="model">training.subscription.history</field>
+            <field name="type">tree</field>
+            <field name="inherit" eval="None"/>
+            <field name="name">subscription_history_tree</field>
+        </record>
+        
+        <record model="ir.action.act_window" id="training_action_subscription_history">
+            <field name="name">Subscription History</field>
+            <field name="res_model">training.subscription.history</field>
+        </record>
+
+        <record model="ir.action.act_window.view" id="act_subscription_history_tree_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="subscription_history_view_tree"/>
+            <field name="act_window" ref="training_action_subscription_history"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_subscription_history_form_view">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="subscription_history_view_form"/>
+            <field name="act_window" ref="training_action_subscription_history"/>
+        </record>
+
+        <menuitem action="training_action_subscription_history"
+            id="training_subscription_history_menuitem" parent="training_subscription"/>
+
+<!-- Training Subscription Sale -->
+
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="sale.sale_view_form"/>            
+            <field name="name">sale_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_view_tree">
+            <field name="model">sale.sale</field>
+            <field name="type">tree</field>
+            <field name="inherit" ref="sale.sale_view_tree"/>
+            <field name="name">sale_tree</field>
+        </record>
+
+<!-- Training Subscription Report -->
+
+		<record model="ir.action.report" id="report_subscription">
+            <field name="name">Contrato</field>
+            <field name="model">training.subscription</field>
+            <field name="report_name">training.subscription</field>
+            <field name="report">training_subscription/contract.odt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_subscription_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">training.subscription,-1</field>
+            <field name="action" ref="report_subscription"/>
+        </record>
+
+    </data>
+</tryton>

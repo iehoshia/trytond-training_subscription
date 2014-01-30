@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tryton>
+    <data skiptest="1">
+
+<!-- Sequences for Subscription -->
+
+        <record id="seq_type_training_subscription" model="ir.sequence.type">
+            <field name="name">Subscription</field>
+            <field name="code">training.subscription</field>
+        </record>
+        <record id="seq_training_subscription" model="ir.sequence">
+            <field name="name">Subscription</field>
+            <field name="code">training.subscription</field>
+            <field name="prefix">SU ${year}</field>
+            <field name="padding">5</field>
+            <field name="number_increment" eval="1"/>
+        </record>
+
+        <record model="ir.property" id="property_subscription_sequence">
+            <field name="field"
+                search="[('model.model', '=', 'training.sequences'), ('name', '=', 'subscription_sequence')]"/>
+            <field name="value" eval="'ir.sequence,' + str(ref('seq_training_subscription'))"/>
+        </record>
+
+    </data>
+</tryton>
